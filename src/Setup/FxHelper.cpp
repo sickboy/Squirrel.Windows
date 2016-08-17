@@ -4,14 +4,14 @@
 
 // http://msdn.microsoft.com/en-us/library/hh925568(v=vs.110).aspx#net_b
 static const wchar_t* ndpPath = L"SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full";
-static const int fx45ReleaseVersion = 378389;
+static const int fx45ReleaseVersion = 393295;
 
 // According to https://msdn.microsoft.com/en-us/library/8z6watww%28v=vs.110%29.aspx,
 // to install .NET 4.5 we must be Vista SP2+, Windows 7 SP1+, or later.
 // However Paul thinks this is just for customer support, anything >= Vista will generally work.
 bool CFxHelper::CanInstallDotNet4_5()
 {
-	return IsWindowsVistaOrGreater();
+	return IsWindows7OrGreater();
 }
 
 bool CFxHelper::IsDotNet45OrHigherInstalled()
@@ -94,12 +94,12 @@ HRESULT CFxHelper::InstallDotNetFramework(bool isQuiet)
 		};
 
 		dlg.SetButtons(buttons, 2);
-		dlg.SetMainInstructionText(L"Install .NET 4.5");
-		dlg.SetContentText(L"This application requires the .NET Framework 4.5. Click the Install button to get started.");
+		dlg.SetMainInstructionText(L"Install .NET 4.6");
+		dlg.SetContentText(L"This application requires the .NET Framework 4.6. Click the Install button to get started.");
 		dlg.SetMainIcon(TD_INFORMATION_ICON);
 
 		dlg.SetExpandedInformationText(
-				L"This application requires .NET Framework 4.5 or above. Clicking "
+				L"This application requires .NET Framework 4.6 or above. Clicking "
 				L"the Install button will download the latest version of this operating "
 				L"system component from Microsoft and install it on your PC.");
 
@@ -246,7 +246,7 @@ HRESULT CFxHelper::HandleRebootRequirement(bool isQuiet)
 
 	dlg.SetButtons(buttons, 2);
 	dlg.SetMainInstructionText(L"Restart System");
-	dlg.SetContentText(L"To finish installing the .NET Framework 4.5, the system now needs to restart.  The installation will finish after you restart and log-in again.");
+	dlg.SetContentText(L"To finish installing the .NET Framework 4.6, the system now needs to restart.  The installation will finish after you restart and log-in again.");
 	dlg.SetMainIcon(TD_INFORMATION_ICON);
 
 	dlg.SetExpandedInformationText(L"If you click 'Cancel', you'll need to re-run this setup program yourself, after restarting your system.");
